@@ -1,0 +1,996 @@
+"""
+-------------------------------------------------------
+Lab/Assignment  Testing (a05)
+-------------------------------------------------------
+Author:  Cassel Robson
+ID:      210507000
+Email:   robs7000@mylaurier.ca
+Version: 2021-010-25
+-------------------------------------------------------
+"""
+-------------------------------------------------------
+t01 - List_array testing
+
+
+# Imports
+from Food import Food
+from List_array import List
+# Constants
+
+#Creating Food Objects
+f1 = Food('Cheese', 5, True, 260)
+f2 = Food('Burger', 2, True, 1000)
+f3 = Food('Chicken', 7, False, 260)
+f4 = Food('Water', 3, True, 10)
+f5 = Food('Meatballs', 5, False, 260)
+f6 = Food('Noodles', 8, False, 260)
+f7 = Food('Wheat', 5, True, 260)
+f8 = Food('Bread', 8, False, 260)
+f9 = Food('Tomato', 2, False, 260)
+f10 = Food('Wonton', 5, True, 260)
+
+#Initializing List() objects source1 and 2
+source1 = List()
+source2 = List()
+
+#appending food objects to source1 and 2
+source1.append(f1)
+source1.append(f2)
+source1.append(f3)
+source1.append(f4)
+source1.append(f5)
+
+source2.append(f6)
+source2.append(f7)
+source2.append(f8)
+source2.append(f9)
+source2.append(f10)
+
+
+#printing food items found in source1 and 2 to output
+print("Source1")
+for i in source1:
+    print(i)
+    print()
+
+print()
+print("Source2")
+for i in source1:
+    print(i)
+    print()
+
+#Creating target list for combine
+target = List()
+
+#Combining source1 and 2 into target and printing
+target.combine(source1, source2)
+print("TARGET: SOURCE1 AND 2 COMBINED (FOOD OBJECTS TESTING)")
+for i in target:
+    print(i)
+    print()
+    
+#Testing the clean function
+
+print("Testing clean function: ")
+
+#Creating list object messy with food items including multiple times
+messy = List()
+
+messy.append(f1)
+messy.append(f2)
+messy.append(f4)
+messy.append(f2)
+messy.append(f1)
+
+#printing messy before the method is used
+print("Messy before clean: ")
+for i in messy:
+    print(i)
+    print()
+messy.clean()
+print()
+
+#Cleaning...
+print("Messy after clean: ")
+for i in messy:
+    print(i)
+    print()
+
+#Testing the intersection method
+
+print("TESTING INTERSECTION METHOD: ")
+intersection = List()
+num1 = List()
+for i in range(5):
+    num1.append(i)
+
+
+num2 = List()
+for i in range(7):
+    num2.append(i)
+#intersecting and printing the resulting intersection
+
+intersection.intersection(num1, num2)
+for i in intersection:
+    print(i)
+    print()
+
+
+#Testing the is_identical method
+print()
+print("TESTING IS_IDENTICAL METHOD: ")
+lst = List()
+for i in range(5):
+    lst.append(i)
+b = num1.is_identical(lst)
+print(b) #prints True if identical, False if not
+
+print()
+
+#Testing the prepend function
+print('TESTING PREPEND: ')
+for i in num1:
+    print(i, end='')
+print('\n')
+num1.prepend(87) #prepends 87 to the front of the list, and when list is empty, appends to the first index
+print("prepending 87")
+for i in num1:
+    print(i, end='')
+print('\n')
+
+#Testing remove front by removing the 87 that was just prepended
+
+print('TESTING REMOVE_FRONT:')
+num1.remove_front()
+for i in num1:
+    print(i, end='')
+print('\n')
+
+#Testing remove_many method with #1
+
+print("TESTING REMOVE_MANY with 1")
+num1.append(1)
+num1.remove_many(1)
+for i in num1:
+    print(i, end='')
+
+print('\n')
+
+#Testing split method, if length of the list is uneven, target1 should have one more number than target 2
+print('Testing Split')
+num1.append(3)
+num1.append(5)
+num1.append(6)
+
+
+target1, target2 = num1.split()
+print('target1')
+for i in target1:
+    print(i, end='')
+print('\n')
+print('target2')
+for i in target2:
+    print(i, end='')
+
+print('\n')
+
+#Testing the split alt method
+print('Testing Split alt')
+num1.append(3)
+num1.append(5)
+num1.append(6)
+num1.append(9)
+for i in num1:
+    print(i, end='')
+print('\n')
+
+target1, target2 = num1.split_alt()
+print('target1')
+for i in target1:
+    print(i, end='')
+print('\n')
+print('target2')
+for i in target2:
+    print(i, end='')
+print('\n')
+
+#Testing union function
+print("TESTING UNION FUNCTION")
+source1 = List()
+source2 = List()
+
+source1.append(17)
+source1.append(324)
+source1.append(2)
+source1.append(57)
+source1.append(14)
+source2.append(2)
+source2.append(137)
+source2.append(47)
+source2.append(15)
+source2.append(3)
+source2.append(12)
+print('source1')
+for i in source1:
+    print(i, end=' ')
+print('\n')
+print('source2')
+for i in source2:
+    print(i, end=' ')
+print('\n')
+union = List()
+union.append(2)
+union.append(57)
+union.append(14)
+union.union(source1, source2) #union (List obj) should contain all values found in both source1 and 2
+print("Union")
+for i in union:
+    print(i, end=' ')
+print('\n')
+
+
+
+
+
+
+#OUTPUT
+
+
+
+#Combine method testing output
+Source1
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Chicken
+Origin:     Italian
+Vegetarian: False
+Calories:   260
+
+Name:       Water
+Origin:     Ethiopian
+Vegetarian: True
+Calories:   10
+
+Name:       Meatballs
+Origin:     Greek
+Vegetarian: False
+Calories:   260
+
+
+Source2
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Chicken
+Origin:     Italian
+Vegetarian: False
+Calories:   260
+
+Name:       Water
+Origin:     Ethiopian
+Vegetarian: True
+Calories:   10
+
+Name:       Meatballs
+Origin:     Greek
+Vegetarian: False
+Calories:   260
+
+TARGET: SOURCE1 AND 2 COMBINED (FOOD OBJECTS TESTING)
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Noodles
+Origin:     American
+Vegetarian: False
+Calories:   260
+
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Wheat
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Chicken
+Origin:     Italian
+Vegetarian: False
+Calories:   260
+
+Name:       Bread
+Origin:     American
+Vegetarian: False
+Calories:   260
+
+Name:       Water
+Origin:     Ethiopian
+Vegetarian: True
+Calories:   10
+
+Name:       Tomato
+Origin:     Indian
+Vegetarian: False
+Calories:   260
+
+Name:       Meatballs
+Origin:     Greek
+Vegetarian: False
+Calories:   260
+
+Name:       Wonton
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+
+
+
+
+
+#clean method testing output
+Testing clean function: 
+Messy before clean: 
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Water
+Origin:     Ethiopian
+Vegetarian: True
+Calories:   10
+
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+
+Messy after clean: 
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Water
+Origin:     Ethiopian
+Vegetarian: True
+Calories:   10
+
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+
+
+
+
+#intersection method output
+TESTING INTERSECTION METHOD: 
+0
+
+1
+
+2
+
+3
+
+4
+
+
+#is_identical testing output
+TESTING IS_IDENTICAL METHOD: 
+True
+
+
+
+TESTING PREPEND: 
+01234
+
+prepending 87
+8701234
+
+
+
+
+TESTING REMOVE_FRONT:
+01234
+
+
+
+
+TESTING REMOVE_MANY with 1
+0234
+
+
+
+
+Testing Split
+target1
+[0, 2, 3, 4]
+
+target2
+[3, 5, 6]
+
+
+
+
+
+Testing Split alt
+02343563569
+
+target1
+033659
+
+target2
+24536
+
+
+
+
+
+TESTING UNION FUNCTION
+source1
+17 324 2 57 14 
+
+source2
+2 137 47 15 3 12 
+
+Union
+2 57 14 17 324 137 47 15 3 12 
+-------------------------------------------------------
+
+-------------------------------------------------------
+t02 - Sorted_List testing 
+
+#testing is very similar to t01, Sorted_List() uses insert function to sort the list when new values are added to the Sorted_List object
+
+
+# Imports
+from Food import Food
+from Sorted_List import Sorted_List
+# Constants
+
+f1 = Food('Cheese', 5, True, 260)
+f2 = Food('Burger', 2, True, 1000)
+f3 = Food('Chicken', 7, False, 260)
+f4 = Food('Water', 3, True, 10)
+f5 = Food('Meatballs', 5, False, 260)
+f6 = Food('Noodles', 8, False, 260)
+f7 = Food('Wheat', 5, True, 260)
+f8 = Food('Bread', 8, False, 260)
+f9 = Food('Tomato', 2, False, 260)
+f10 = Food('Wonton', 5, True, 260)
+
+source1 = Sorted_List()
+source2 = Sorted_List()
+
+source1.insert(f1)
+source1.insert(f2)
+source1.insert(f3)
+source1.insert(f4)
+source1.insert(f5)
+
+source2.insert(f6)
+source2.insert(f7)
+source2.insert(f8)
+source2.insert(f9)
+source2.insert(f10)
+print("Source1")
+for i in source1:
+    print(i)
+    print()
+
+print()
+print("Source2")
+for i in source1:
+    print(i)
+    print()
+
+target = Sorted_List()
+
+target.combine(source1, source2)
+print("TARGET: SOURCE1 AND 2 COMBINED (FOOD OBJECTS TESTING)")
+for i in target:
+    print(i)
+    print()
+    
+    
+    
+    
+    
+    
+    
+
+print("Testing clean function: ")
+
+messy = Sorted_List()
+
+messy.insert(f1)
+messy.insert(f2)
+messy.insert(f4)
+messy.insert(f2)
+messy.insert(f1)
+print("Messy before clean: ")
+for i in messy:
+    print(i)
+    print()
+messy.clean()
+print()
+print("Messy after clean: ")
+for i in messy:
+    print(i)
+    print()
+
+
+
+
+
+
+
+
+
+
+print("TESTING INTERSECTION METHOD: ")
+intersection = Sorted_List()
+num1 = Sorted_List()
+for i in range(5):
+    num1.insert(i)
+
+
+num2 = Sorted_List()
+for i in range(7):
+    num2.insert(i)
+
+intersection.intersection(num1, num2)
+for i in intersection:
+    print(i)
+    print()
+
+print()
+
+
+
+
+
+
+
+print("TESTING IS_IDENTICAL METHOD: ")
+lst = Sorted_List()
+for i in range(5):
+    lst.insert(i)
+b = num1.is_identical(lst)
+print(b)
+
+print()
+
+
+
+
+
+
+
+
+print('TESTING REMOVE_FRONT:')
+num1.remove_front()
+for i in num1:
+    print(i, end='')
+print('\n')
+
+
+
+
+
+
+
+
+print("TESTING REMOVE_MANY with 1")
+num1.insert(1)
+num1.remove_many(1)
+for i in num1:
+    print(i, end='')
+
+print('\n')
+
+
+
+
+
+
+
+print('Testing Split')
+num1.insert(3)
+num1.insert(5)
+num1.insert(6)
+
+
+target1, target2 = num1.split()
+print('target1')
+for i in target1:
+    print(i, end='')
+print('\n')
+print('target2')
+for i in target2:
+    print(i, end='')
+
+print('\n')
+
+
+
+
+
+print('Testing Split alt')
+num1.insert(3)
+num1.insert(5)
+num1.insert(6)
+num1.insert(9)
+for i in num1:
+    print(i, end='')
+print('\n')
+
+target1, target2 = num1.split_alt()
+print('target1')
+for i in target1:
+    print(i, end='')
+print('\n')
+print('target2')
+for i in target2:
+    print(i, end='')
+print('\n')
+
+
+
+
+
+
+print("TESTING UNION FUNCTION")
+source1 = Sorted_List()
+source2 = Sorted_List()
+
+source1.insert(17)
+source1.insert(324)
+source1.insert(2)
+source1.insert(57)
+source1.insert(14)
+source2.insert(2)
+source2.insert(137)
+source2.insert(47)
+source2.insert(15)
+source2.insert(3)
+source2.insert(12)
+print('source1')
+for i in source1:
+    print(i, end=' ')
+print('\n')
+print('source2')
+for i in source2:
+    print(i, end=' ')
+print('\n')
+union = Sorted_List()
+union.insert(2)
+union.insert(57)
+union.insert(14)
+union.union(source1, source2)
+print("Union")
+for i in union:
+    print(i, end=' ')
+print('\n')
+
+
+
+
+
+
+
+#OUTPUT
+
+
+
+
+Source1
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Chicken
+Origin:     Italian
+Vegetarian: False
+Calories:   260
+
+Name:       Meatballs
+Origin:     Greek
+Vegetarian: False
+Calories:   260
+
+Name:       Water
+Origin:     Ethiopian
+Vegetarian: True
+Calories:   10
+
+
+Source2
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Chicken
+Origin:     Italian
+Vegetarian: False
+Calories:   260
+
+Name:       Meatballs
+Origin:     Greek
+Vegetarian: False
+Calories:   260
+
+Name:       Water
+Origin:     Ethiopian
+Vegetarian: True
+Calories:   10
+
+TARGET: SOURCE1 AND 2 COMBINED (FOOD OBJECTS TESTING)
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Bread
+Origin:     American
+Vegetarian: False
+Calories:   260
+
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Noodles
+Origin:     American
+Vegetarian: False
+Calories:   260
+
+Name:       Chicken
+Origin:     Italian
+Vegetarian: False
+Calories:   260
+
+Name:       Tomato
+Origin:     Indian
+Vegetarian: False
+Calories:   260
+
+Name:       Meatballs
+Origin:     Greek
+Vegetarian: False
+Calories:   260
+
+Name:       Wheat
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Water
+Origin:     Ethiopian
+Vegetarian: True
+Calories:   10
+
+Name:       Wonton
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+
+
+
+
+
+
+
+
+
+
+Testing clean function: 
+Messy before clean: 
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Water
+Origin:     Ethiopian
+Vegetarian: True
+Calories:   10
+
+
+Messy after clean: 
+Name:       Burger
+Origin:     Indian
+Vegetarian: True
+Calories:   1000
+
+Name:       Cheese
+Origin:     Greek
+Vegetarian: True
+Calories:   260
+
+Name:       Water
+Origin:     Ethiopian
+Vegetarian: True
+Calories:   10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TESTING INTERSECTION METHOD: 
+0
+
+1
+
+2
+
+3
+
+4
+
+
+
+
+
+
+
+
+
+
+
+TESTING IS_IDENTICAL METHOD: 
+True
+
+
+
+
+
+
+
+
+
+
+
+TESTING REMOVE_FRONT: #removed 0 from the front
+1234
+
+
+
+
+
+
+
+
+
+
+TESTING REMOVE_MANY with 1 #after inserting an extra 1, the extra 1 and original 1 are removed
+234
+
+
+
+
+
+
+
+
+
+Testing Split
+target1
+[1, 2, 3, 3]
+
+target2
+[4, 5, 6]
+
+
+
+
+
+
+Testing Split alt
+12333455669
+
+target1
+133569
+
+target2
+23456
+
+
+
+
+
+
+TESTING UNION FUNCTION
+source1
+2 14 17 57 324 
+
+source2
+2 3 12 15 47 137 
+
+Union
+2 14 57 17 324 3 12 15 47 137 #notice that 2 is found in source1 and 2, but only included in union once
+
+
+
