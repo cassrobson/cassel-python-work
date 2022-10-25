@@ -1,0 +1,189 @@
+"""
+-------------------------------------------------------
+testing for a05
+-------------------------------------------------------
+Author:  Cassel Robson
+ID:      210507000
+Email:   robs7000@mylaurier.ca
+__updated__ = "2022-02-11"
+-------------------------------------------------------
+"""
+# Imports
+from Food import Food
+from Sorted_List import Sorted_List
+# Constants
+
+f1 = Food('Cheese', 5, True, 260)
+f2 = Food('Burger', 2, True, 1000)
+f3 = Food('Chicken', 7, False, 260)
+f4 = Food('Water', 3, True, 10)
+f5 = Food('Meatballs', 5, False, 260)
+f6 = Food('Noodles', 8, False, 260)
+f7 = Food('Wheat', 5, True, 260)
+f8 = Food('Bread', 8, False, 260)
+f9 = Food('Tomato', 2, False, 260)
+f10 = Food('Wonton', 5, True, 260)
+
+source1 = Sorted_List()
+source2 = Sorted_List()
+
+source1.insert(f1)
+source1.insert(f2)
+source1.insert(f3)
+source1.insert(f4)
+source1.insert(f5)
+
+source2.insert(f6)
+source2.insert(f7)
+source2.insert(f8)
+source2.insert(f9)
+source2.insert(f10)
+print("Source1")
+for i in source1:
+    print(i)
+    print()
+
+print()
+print("Source2")
+for i in source1:
+    print(i)
+    print()
+
+target = Sorted_List()
+
+target.combine(source1, source2)
+print("TARGET: SOURCE1 AND 2 COMBINED (FOOD OBJECTS TESTING)")
+for i in target:
+    print(i)
+    print()
+
+print("Testing clean function: ")
+
+messy = Sorted_List()
+
+messy.insert(f1)
+messy.insert(f2)
+messy.insert(f4)
+messy.insert(f2)
+messy.insert(f1)
+print("Messy before clean: ")
+for i in messy:
+    print(i)
+    print()
+messy.clean()
+print()
+print("Messy after clean: ")
+for i in messy:
+    print(i)
+    print()
+
+
+print("TESTING INTERSECTION METHOD: ")
+intersection = Sorted_List()
+num1 = Sorted_List()
+for i in range(5):
+    num1.insert(i)
+
+
+num2 = Sorted_List()
+for i in range(7):
+    num2.insert(i)
+
+intersection.intersection(num1, num2)
+for i in intersection:
+    print(i)
+    print()
+
+print()
+print("TESTING IS_IDENTICAL METHOD: ")
+lst = Sorted_List()
+for i in range(5):
+    lst.insert(i)
+b = num1.is_identical(lst)
+print(b)
+
+print()
+
+
+print('TESTING REMOVE_FRONT:')
+num1.remove_front()
+for i in num1:
+    print(i, end='')
+print('\n')
+
+print("TESTING REMOVE_MANY with 1")
+num1.insert(1)
+num1.remove_many(1)
+for i in num1:
+    print(i, end='')
+
+print('\n')
+print('Testing Split')
+num1.insert(3)
+num1.insert(5)
+num1.insert(6)
+
+
+target1, target2 = num1.split()
+print('target1')
+for i in target1:
+    print(i, end='')
+print('\n')
+print('target2')
+for i in target2:
+    print(i, end='')
+
+print('\n')
+
+print('Testing Split alt')
+num1.insert(3)
+num1.insert(5)
+num1.insert(6)
+num1.insert(9)
+for i in num1:
+    print(i, end='')
+print('\n')
+
+target1, target2 = num1.split_alt()
+print('target1')
+for i in target1:
+    print(i, end='')
+print('\n')
+print('target2')
+for i in target2:
+    print(i, end='')
+print('\n')
+
+
+print("TESTING UNION FUNCTION")
+source1 = Sorted_List()
+source2 = Sorted_List()
+
+source1.insert(17)
+source1.insert(324)
+source1.insert(2)
+source1.insert(57)
+source1.insert(14)
+source2.insert(2)
+source2.insert(137)
+source2.insert(47)
+source2.insert(15)
+source2.insert(3)
+source2.insert(12)
+print('source1')
+for i in source1:
+    print(i, end=' ')
+print('\n')
+print('source2')
+for i in source2:
+    print(i, end=' ')
+print('\n')
+union = Sorted_List()
+union.insert(2)
+union.insert(57)
+union.insert(14)
+union.union(source1, source2)
+print("Union")
+for i in union:
+    print(i, end=' ')
+print('\n')
