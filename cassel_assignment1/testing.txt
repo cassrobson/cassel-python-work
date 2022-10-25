@@ -1,0 +1,95 @@
+"""
+-------------------------------------------------------
+Assignment 1 Testing
+-------------------------------------------------------
+Author:  Cassel Robson
+ID:      210507000
+Email:   robs7000@mylaurier.ca
+Version: 2021-010-29
+-------------------------------------------------------
+"""
+-------------------------------------------------------
+t01
+values = [1, 2, 1, 4, 4, 6, 7, 8, 8]
+
+test = clean_list(values)
+print(test)
+#Output
+None
+(Functions returns None)
+-------------------------------------------------------
+t02
+s = 'I think your book is an utter piece of Garbage'
+
+out = dsmvwl(s)
+
+print(f'Disemvowelled: {out}')
+#Output
+Disemvowelled:  thnk yr bk s n uttr pc of Grbge
+-------------------------------------------------------
+t03
+fv = open('foods.txt', 'r')
+u, l, d, w, r = file_analyze(fv)
+
+print(f'u: {u}, l: {l}, d: {d}, w: {d}, r = {r}')
+#Output
+u: 8, l: 70, d: 10, w: 10, r = 0
+-------------------------------------------------------
+t04
+year = 1700
+
+leap_year = is_leap_year(year)
+print(leap_year)
+#Output
+False
+-------------------------------------------------------
+t05
+s = 'Davad'
+
+palindrome = is_palindrome(s)
+
+print(palindrome)
+#Output
+True
+-------------------------------------------------------
+t06
+a = [0, 1, 4, 5]
+
+print(max_diff(a))
+#Output
+3
+
+-------------------------------------------------------
+t07
+a = [[0, 2, 4, 6, 8], [1, 3, 5, 7, 9]]
+
+print(matrix_transpose(a))
+#Output
+[[0 1]
+ [2 3]
+ [4 5]
+ [6 7]
+ [8 9]]
+
+-------------------------------------------------------
+t08
+a = [[2, 3], [4, 5], [6, 4]]
+
+large, small, total, average = matrix_stats(a)
+
+print(f'large: {large}, small: {small}, total: {total}, average: {average}')
+#Output
+large: 6, small: 2, total: 24, average: 4.0
+
+-------------------------------------------------------
+t09
+word = 'car'
+
+pl = pig_latin(word)
+
+print(pl)
+#Output
+arcay
+
+
+-------------------------------------------------------
