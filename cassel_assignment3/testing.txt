@@ -1,0 +1,256 @@
+"""
+-------------------------------------------------------
+Lab/Assignment  Testing (a03)
+-------------------------------------------------------
+Author:  Cassel Robson
+ID:      210507000
+Email:   robs7000@mylaurier.ca
+Version: 2021-010-25
+-------------------------------------------------------
+"""
+-------------------------------------------------------
+t01
+from Stack_array import Stack
+from functions import stack_combine
+
+source1 = Stack()
+source2 = Stack()
+
+source1.push(1)
+source1.push(1)
+source1.push(1)
+source1.push(1)
+source1.push(1)
+
+source2.push(2)
+source2.push(2)
+source2.push(2)
+source2.push(2)
+source2.push(2)
+
+
+print("Source 1 stack: ")
+for i in source1:
+    print(i)
+print()
+print()
+print('\n')
+print('Source 2 stack: ')
+for i in source2:
+    print(i)
+
+print()
+print()
+target = stack_combine(source1, source2)
+
+
+print()
+print()
+print("target: ")
+print()
+for i in target:
+    print(i)
+    
+#Output
+
+Source 1 stack: 
+1
+1
+1
+1
+1
+
+
+
+
+Source 2 stack: 
+2
+2
+2
+2
+2
+
+
+
+
+target: 
+
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+-------------------------------------------------------
+t02
+from Stack_array import Stack
+# Constants
+
+source1 = Stack()
+source2 = Stack()
+target = Stack()
+
+source1.push(1)
+source1.push(4)
+source1.push(5)
+source1.push(2)
+source1.push(7)
+
+source2.push(11)
+source2.push(4)
+source2.push(1)
+source2.push(23)
+source2.push(77)
+source2.push(86)
+source2.push(2)
+
+print(target.combine(source1, source2))
+
+for i in target:
+    print(i)
+
+#Output
+Target combined
+11
+4
+1
+1
+23
+4
+77
+5
+86
+2
+2
+7
+-------------------------------------------------------
+t03
+from Stack_array import Stack
+from functions import stack_reverse
+# Constants
+
+source = Stack()
+
+source.push(1)
+source.push(4)
+source.push(5)
+source.push(2)
+source.push(7)
+
+for i in source:
+    print(i)
+
+print()
+
+stack_reverse(source)
+
+print("After reversal: ")
+
+for i in source:
+    print(i)
+
+#Output
+
+7
+2
+5
+4
+1
+
+After reversal: 
+1
+4
+5
+2
+7
+
+-------------------------------------------------------
+t04
+from Stack_array import Stack
+# Constants
+
+source1 = Stack()
+
+source1.push(1)
+source1.push(4)
+source1.push(5)
+source1.push(2)
+source1.push(7)
+print("Source before reversal: ")
+for i in source1:
+    print(i)
+
+print()
+
+source1.reverse()
+print("Source before reversal: ")
+for i in source1:
+    print(i)
+
+#Output
+
+Source before reversal: 
+7
+2
+5
+4
+1
+
+Source before reversal: 
+1
+4
+5
+2
+7
+-------------------------------------------------------
+t05
+
+from functions import is_palindrome_stack
+# Constants
+
+string = 'A man, a plan, a canal, Panama!'
+
+palindrome = is_palindrome_stack(string)
+print(string)
+print(palindrome)
+
+#Output 1
+
+A man, a plan, a canal, Panama!
+True
+
+#Output 2: string = 'I want to go to the mall!'
+
+I want to go to the mall!
+False
+
+#Output 3: string = '1234RacecAr12345', Expected True
+
+1234RacecAr12345
+True
+
+-------------------------------------------------------
+t06
+
+from functions import reroute
+# Constants
+
+opstring = 'SSXSSXXX'
+
+values_in = [1, 2, 3, 4]
+
+values_out = reroute(opstring, values_in)
+
+print(values_out)
+
+#Output
+
+[2, 4, 3, 1]
+
+#Output 2: 'SXXSSXXS'
+
+assert len(self._values) > 0, "Cannot pop from an empty stack"
