@@ -1,0 +1,374 @@
+"""
+-------------------------------------------------------
+Lab/Assignment  Testing (a04)
+-------------------------------------------------------
+Author:  Cassel Robson
+ID:      210507000
+Email:   robs7000@mylaurier.ca
+Version: 2021-010-25
+-------------------------------------------------------
+"""
+-------------------------------------------------------
+t01
+# Imports
+from Queue_circular import Queue
+# Constants
+
+q = Queue()
+print("Initializing circular Queue object and checking if its empty: ")
+print(q.is_empty())
+print()
+
+
+print("inserting a 4... checking if queue is empty")
+q.insert(4)
+print(q.is_empty())
+print()
+
+
+print("Checking if circular queue is full...")
+print(q.is_full())
+print()
+
+
+print('Asking for number of values in circular queue...')
+print(len(q))
+print()
+
+
+print("Inserting numbers 5, 7...")
+q.insert(5)
+q.insert(7)
+print()
+
+
+print('Asking for number of values in circular queue...')
+print(len(q))
+print()
+
+
+print("Removing item from first position...")
+q.remove()
+print()
+
+
+print('Asking for number of values in circular queue...')
+print(len(q))
+print()
+
+
+print("Checking the item in the first position of circular queue...")
+print(q.peek())
+print()
+
+
+print("Checking if queue is empty...")
+print(q.is_empty())
+
+
+
+#Output
+
+Initializing circular Queue object and checking if its empty: 
+True
+
+inserting a 4... checking if queue is empty
+False
+
+Checking if circular queue is full...
+False
+
+Asking for number of values in circular queue...
+1
+
+Inserting numbers 5, 7...
+
+Asking for number of values in circular queue...
+3
+
+Removing item from first position...
+
+Asking for number of values in circular queue...
+2
+
+Checking the item in the first position of circular queue...
+5
+
+Checking if queue is empty...
+False
+
+-------------------------------------------------------
+t02
+# Imports
+from Queue_array import Queue
+from functions import queue_split_alt
+# Constants
+
+source = Queue()
+for i in range(10):
+    source.insert(i)
+print("Source: ")
+for i in source:
+    print(i, end='')
+
+print('\n')
+
+target1, target2 = queue_split_alt(source)
+print("target 1: ")
+for i in target1:
+    print(i, end='')
+
+print('\n')
+print("target 2")
+for i in target2:
+    print(i, end='')
+
+print('\n')
+
+#output
+
+Source: 
+0123456789
+
+target 1: 
+02468
+
+target 2
+13579
+-------------------------------------------------------
+t03
+# Imports
+from Queue_array import Queue
+# Constants
+
+source = Queue()
+
+for i in range(10):
+    source.insert(i)
+
+print("source")
+
+for i in source:
+    print(i, end='')
+
+print('\n')
+
+target1, target2 = source.split_alt()
+
+print("target1")
+for i in target1:
+    print(i, end='')
+
+print('\n')
+
+print("target1")
+for i in target2:
+    print(i, end='')
+
+print('\n')
+
+
+print("source")
+
+for i in source:
+    print(i, end='')
+
+print('\n')
+
+
+#Output
+
+
+source 
+0123456789
+
+target1
+02468
+
+target1
+13579
+
+source #source after method is used is empty
+
+-------------------------------------------------------
+t04
+# Imports
+from functions import pq_split_key
+from Priority_Queue_array import Priority_Queue
+# Constants
+
+source = Priority_Queue()
+
+for i in range(10):
+    source.insert(i)
+
+
+print("source")
+
+for i in source:
+    print(i, end='')
+
+print('\n')
+key = int(input("Enter a key: "))
+target1, target2 = pq_split_key(source, key)
+
+print("target1")
+for i in target1:
+    print(i, end='')
+
+print('\n')
+
+print("target2")
+for i in target2:
+    print(i, end='')
+
+print('\n')
+
+
+print("source")
+
+for i in source:
+    print(i, end='')
+
+print('\n')
+
+#output when key = 5
+
+source
+0123456789
+
+Enter a key: 5
+target1
+6789
+
+target2
+012345
+
+source #empty
+
+#output when key is not found in the items in the queue (greater or smaller)
+
+source
+0123456789
+
+Enter a key: 35
+target1
+
+
+target2
+0123456789
+
+source #empty
+-------------
+source
+0123456789
+
+Enter a key: -1
+target1
+0123456789
+
+target2
+
+
+source #empty
+
+-------------------------------------------------------
+t05
+
+# Imports
+from Priority_Queue_array import Priority_Queue
+# Constants
+source = Priority_Queue()
+
+for i in range(10):
+    source.insert(i)
+
+
+print("Source before split_key method: ")
+
+for i in source:
+    print(i, end='')
+
+print('\n')
+
+key = int(input("Enter a key: "))
+
+target1, target2 = source.split_key(key)
+
+print("target1 after method: ")
+for i in target1:
+    print(i, end='')
+
+print('\n')
+
+print("target2 after method: ")
+for i in target2:
+    print(i, end='')
+
+print('\n')
+
+
+print("Source after split_key method: ")
+
+for i in source:
+    print(i, end='')
+
+print('\n')
+
+#output
+
+Source before split_key method: 
+0123456789
+
+Enter a key: 5
+target1 after method: 
+6789
+
+target2 after method: 
+012345
+
+Source after split_key method: #empty
+
+
+#output if number is not found in source (greater or smaller)
+
+Source before split_key method: 
+0123456789
+
+Enter a key: 11
+target1 after method: 
+
+
+target2 after method: 
+0123456789
+
+Source after split_key method: 
+
+Source before split_key method: 
+0123456789
+
+Enter a key: -1
+target1 after method: 
+0123456789
+
+target2 after method: 
+
+
+Source after split_key method: #empty
+
+-------------------------------------
+Source before split_key method: 
+0123456789
+
+Enter a key: -1
+target1 after method: 
+0123456789
+
+target2 after method: 
+
+
+Source after split_key method: #empty
+
+
+
+
